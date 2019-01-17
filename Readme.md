@@ -1,6 +1,6 @@
-# How to handle server-side errors in web reporting controls
+# How to handle server-side errors in ASP.NET Core reporting controls
 
-This example demonstrates how to process errors that occur on web reporting controls' server side.
+This example demonstrates how to process errors that occur on ASP.NET Core reporting controls' server side.
 
 * The [ReportDesignerExceptionHandler](https://docs.devexpress.com/XtraReports/DevExpress.XtraReports.Web.ReportDesigner.Services.ReportDesignerExceptionHandler) class is used for the [End-User Report Designer](https://docs.devexpress.com/XtraReports/400249/create-end-user-reporting-applications/web-reporting/asp-net-core-reporting/end-user-report-designer) control.
 * The [WebDocumentViewerExceptionHandler](https://docs.devexpress.com/XtraReports/400248/create-end-user-reporting-applications/web-reporting/asp-net-core-reporting/document-viewer) class is used for the separate [Web Document Viewer](https://docs.devexpress.com/XtraReports/17738/create-end-user-reporting-applications/web-reporting/asp-net-webforms-reporting/document-viewer/html5-document-viewer) control and the Report Designer's built-in Document Viewer.
