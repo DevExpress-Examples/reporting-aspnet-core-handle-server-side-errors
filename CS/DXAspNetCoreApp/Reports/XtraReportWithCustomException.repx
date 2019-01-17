@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="18.2.4.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" PageWidth="850" PageHeight="1100" Version="18.2" Font="Arial, 9.75pt">
+  <Parameters>
+    <Item1 Ref="2" Description="StartDate" ValueInfo="2019-01-01" Name="StartDate" Type="#Ref-1" />
+    <Item2 Ref="3" Description="EndDate" ValueInfo="2019-02-01" Name="EndDate" Type="#Ref-1" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="4" ControlType="TopMarginBand" Name="TopMargin" />
+    <Item2 Ref="5" ControlType="BottomMarginBand" Name="BottomMargin" />
+    <Item3 Ref="6" ControlType="DetailBand" Name="Detail">
+      <Controls>
+        <Item1 Ref="7" ControlType="XRLabel" Name="xrLabel3" TextFormatString="{0:d}" Multiline="true" Text="xrLabel3" SizeF="134.375,23" LocationFloat="225, 0" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="8" Expression="?StartDate" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item1>
+        <Item2 Ref="9" ControlType="XRLabel" Name="xrLabel2" TextFormatString="{0:d}" Multiline="true" Text="xrLabel2" SizeF="129.1667,23" LocationFloat="405.2083, 0" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="10" Expression="?EndDate" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item2>
+        <Item3 Ref="11" ControlType="XRLabel" Name="xrLabel1" Multiline="true" Text="Test Report For Date Range:&#xD;&#xA;" SizeF="214.5833,23" LocationFloat="0, 0" Padding="2,2,0,0,100" />
+      </Controls>
+    </Item3>
+  </Bands>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.2" Ref="1" Content="System.DateTime" Type="System.Type" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

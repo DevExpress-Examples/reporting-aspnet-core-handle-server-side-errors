@@ -1,0 +1,78 @@
+<link href="~/node_modules/jquery-ui-dist/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/node_modules/devextreme/dist/css/dx.common.css" rel="stylesheet" />
+<link href="~/node_modules/devextreme/dist/css/dx.light.css" rel="stylesheet" />
+<link href="~/node_modules/@@devexpress/analytics-core/dist/css/dx-analytics.common.css" rel="stylesheet" />
+<link href="~/node_modules/@@devexpress/analytics-core/dist/css/dx-analytics.light.css" rel="stylesheet" />
+<link href="~/node_modules/@@devexpress/analytics-core/dist/css/dx-querybuilder.css" rel="stylesheet" />
+<link href="~/node_modules/devexpress-reporting/dist/css/dx-reportdesigner.css" rel="stylesheet" />
+<link href="~/node_modules/devexpress-reporting/dist/css/dx-webdocumentviewer.css" rel="stylesheet" />
+
+<!-- 3rd-party dependencies -->
+<script src="~/node_modules/jquery/dist/jquery.js"></script>
+<script src="~/node_modules/jquery-ui-dist/jquery-ui.js"></script>
+<script src="~/node_modules/knockout/build/output/knockout-latest.js"></script>
+<script src="~/node_modules/ace-builds/src-min-noconflict/ace.js"></script>
+<script src="~/node_modules/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
+<script src="~/node_modules/ace-builds/src-min-noconflict/theme-dreamweaver.js"></script>
+<script src="~/node_modules/ace-builds/src-min-noconflict/theme-ambiance.js"></script>
+<script src="~/node_modules/ace-builds/src-min-noconflict/snippets/text.js"></script>
+<script src="~/node_modules/cldrjs/dist/cldr.js"></script>
+<script src="~/node_modules/cldrjs/dist/cldr/event.js"></script>
+<script src="~/node_modules/cldrjs/dist/cldr/supplemental.js"></script>
+<script src="~/node_modules/cldrjs/dist/cldr/unresolved.js"></script>
+<script src="~/node_modules/globalize/dist/globalize.js"></script>
+<script src="~/node_modules/globalize/dist/globalize/message.js"></script>
+<script src="~/node_modules/globalize/dist/globalize/number.js"></script>
+<script src="~/node_modules/globalize/dist/globalize/currency.js"></script>
+<script src="~/node_modules/globalize/dist/globalize/date.js"></script>
+
+<script src="~/node_modules/devextreme/dist/js/dx.all.js"></script>
+<script src="~/node_modules/@@devexpress/analytics-core/dist/js/dx-analytics-core.min.js"></script>
+<script src="~/node_modules/@@devexpress/analytics-core/dist/js/dx-querybuilder.min.js"></script>
+<script src="~/node_modules/devexpress-reporting/dist/js/dx-webdocumentviewer.min.js"></script>
+<script src="~/node_modules/devexpress-reporting/dist/js/dx-reportdesigner.min.js"></script>
+
+<script type="text/javascript">
+    var showPreview;
+    function openReport(report) {
+        webReportDesigner.OpenReport(report);
+        showPreview = false;
+    }
+
+    function reportOpened(s, e) {
+        showPreview && s.ShowPreview();
+        showPreview = false;
+    }
+
+    function openReportPreview(report) {
+        openReport(report);
+        showPreview = true;
+    }
+    function beforeRender(s, e) {
+        window.webReportDesigner = s;
+    }
+    function customizeParameterEditors(s, e) {
+        if (e.parameter.type == "System.DateTime") {
+            e.info.editor = $.extend({}, e.info.editor);
+            e.info.editor.extendedOptions = $.extend(e.info.editor.extendedOptions, { type: 'date', applyValueMode: 'useButtons' });
+        }
+    }
+</script>
+
+<input type="button" style="width: 180px; height: 23px" onclick="openReport('brokenReportLayout')" value="Broken Report Layout" />
+<input type="button" style="width: 150px; height: 23px" onclick="openReport('fileNotFound')" value="File Not Found" />
+<input type="button" style="width: 300px; height: 23px" onclick="openReportPreview('reportWithException')" value="UnauthorizedAccessException on BeforePrint" />
+<input type="button" style="width: 250px; height: 23px" onclick="openReportPreview('reportWithCustomException')" value="Custom Exception on BeforePrint" />
+<input type="button" style="width: 150px; height: 23px" onclick="openReport('invalidUrl')" value="Invalid Report URL" />
+
+@(Html.DevExpress()
+                .ReportDesigner("reportDesigner")
+                .ClientSideEvents(events => {
+                    events.BeforeRender("beforeRender");
+                    events.ReportOpened("reportOpened");
+                    events.CustomizeParameterEditors("customizeParameterEditors");
+                    events.Preview(preview => {
+
+                    });
+                })
+                .Height("800px"))
