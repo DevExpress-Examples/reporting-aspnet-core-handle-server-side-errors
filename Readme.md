@@ -26,4 +26,4 @@ The following table lists errors from this example and methods used to process t
 
 **See also**
 
-[How to handle server-side errors in web reporting controls](https://github.com/DevExpress-Examples/how-to-handle-server-side-errors-in-web-reporting-controls)
+[How to handle server-side errors in web reporting controls (ASP.NET WebForms/MVC)](https://github.com/DevExpress-Examples/how-to-handle-server-side-errors-in-web-reporting-controls)
