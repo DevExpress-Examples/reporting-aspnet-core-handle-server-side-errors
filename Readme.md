@@ -23,3 +23,7 @@ The following table lists errors from this example and methods used to process t
 | Custom Exception on BeforePrint | CustomInvalidRangeException (descendant from [Exception](https://docs.microsoft.com/en-us/dotnet/api/system.exception)) | [GetDocumentCreationExceptionMessage](https://docs.devexpress.com/XtraReports/DevExpress.XtraReports.Web.WebDocumentViewer.WebDocumentViewerExceptionHandler.GetDocumentCreationExceptionMessage(DocumentCreationException))
 | Invalid Report URL (Designer) | FaultException  | [GetFaultExceptionMessage](http://docs.devexpress.com/XtraReports/DevExpress.XtraReports.Web.ClientControls.ExceptionHandler.GetFaultExceptionMessage(System.ServiceModel.FaultException))
 | Custom Document Operation (Viewer) | FaultException  | [GetFaultExceptionMessage](http://docs.devexpress.com/XtraReports/DevExpress.XtraReports.Web.ClientControls.ExceptionHandler.GetFaultExceptionMessage(System.ServiceModel.FaultException))
+
+**See also**
+
+[How to handle server-side errors in web reporting controls](https://github.com/DevExpress-Examples/how-to-handle-server-side-errors-in-web-reporting-controls)
