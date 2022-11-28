@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "defaultProvider": "filesystem",
+  "libraries": [
+    {
+      "library": "node_modules/bootstrap/dist/css/",
+      "destination": "wwwroot/css",
+      "files": [
+        "bootstrap.min.css.map"
+      ]
+    },
+    {
+      "library": "node_modules/bootstrap/dist/js/",
+      "destination": "wwwroot/js",
+      "files": [
+        "bootstrap.min.js.map"
+      ]
+    },
+    {
+      "library": "node_modules/devextreme/dist/css/icons/",
+      "destination": "wwwroot/css/icons",
+      "files": [
+        "dxicons.ttf",
+        "dxicons.woff2",
+        "dxicons.woff"
+      ]
+    }
+  ]
+}

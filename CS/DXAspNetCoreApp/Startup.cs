@@ -16,6 +16,7 @@ using DevExpress.DataAccess;
 using DXAspNetCoreApp.Services;
 using DevExpress.XtraReports.Web.WebDocumentViewer;
 using DevExpress.XtraReports.Web.ReportDesigner.Services;
+using Microsoft.Extensions.Hosting;
 
 namespace DXAspNetCoreApp {
     public class Startup {
@@ -27,13 +28,13 @@ namespace DXAspNetCoreApp {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+            services.AddMvc();
             services.AddDevExpressControls();
             services
                 .AddSingleton<ReportStorageWebExtension, ReportStorageWebExtension1>()
                 .AddSingleton<IWebDocumentViewerExceptionHandler, CustomWebDocumentViewerExceptionHandler>()
-                .AddSingleton<IReportDesignerExceptionHandler, CustomReportDesignerExceptionHandler>()
-                .AddMvc()
-                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+                .AddSingleton<IReportDesignerExceptionHandler, CustomReportDesignerExceptionHandler>();
+              
             var connectionStringsConfiguretionSection = Configuration.GetSection("ConnectionStrings");
             DefaultConnectionStringProvider.AssignConnectionStrings(connectionStringsConfiguretionSection.AsEnumerable(true).ToDictionary(x => x.Key, y => y.Value));
 
@@ -45,7 +46,7 @@ namespace DXAspNetCoreApp {
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) {
+        public void Configure(IApplicationBuilder app, IHostEnvironment env, ILoggerFactory loggerFactory) {
             var reportingLogger = loggerFactory.CreateLogger("Reporting");
             LoggerService.Initialize((ex, message) => {
                 var errorString = string.Format("[{0}]: Exception occurred. Message: '{1}'. Exception Details:\r\n{2}", DateTime.Now, message, ex);
@@ -58,15 +59,9 @@ namespace DXAspNetCoreApp {
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "node_modules")),
-                RequestPath = "/node_modules"
-            });            
-            app.UseMvc(routes => {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+            app.UseRouting();
+            app.UseEndpoints(configure => {
+                configure.MapDefaultControllerRoute();
             });
         }
     }

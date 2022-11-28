@@ -4,6 +4,7 @@ using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Web.Extensions;
 using DXAspNetCoreApp.Reports;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace DXAspNetCoreApp {
     public class ReportStorageWebExtension1 : ReportStorageWebExtension {
@@ -11,7 +12,7 @@ namespace DXAspNetCoreApp {
         readonly string reportDirectory;
         const string ReprtFileExtension = ".repx";
 
-		public ReportStorageWebExtension1(IHostingEnvironment env) {
+		public ReportStorageWebExtension1(IHostEnvironment env) {
             reportDirectory = Path.Combine(env.ContentRootPath, "Reports");
 		}
 
