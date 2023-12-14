@@ -5,7 +5,7 @@
 <!-- default badges end -->
 # How to handle server-side errors in ASP.NET Core reporting controls
 
-This example demonstrates how to process errors that occur on ASP.NET Core reporting controls' server side.
+This example demonstrates how to process errors that occur on the ASP.NET Core reporting controls' server side.
 
 * The [ReportDesignerExceptionHandler](https://docs.devexpress.com/XtraReports/DevExpress.XtraReports.Web.ReportDesigner.Services.ReportDesignerExceptionHandler) class is used for the [End-User Report Designer](https://docs.devexpress.com/XtraReports/400249/create-end-user-reporting-applications/web-reporting/asp-net-core-reporting/end-user-report-designer) control.
 * The [WebDocumentViewerExceptionHandler](https://docs.devexpress.com/XtraReports/400248/create-end-user-reporting-applications/web-reporting/asp-net-core-reporting/document-viewer) class is used for the separate [Web Document Viewer](https://docs.devexpress.com/XtraReports/17738/create-end-user-reporting-applications/web-reporting/asp-net-webforms-reporting/document-viewer/html5-document-viewer) control and the Report Designer's built-in Document Viewer.
@@ -15,6 +15,8 @@ These classes expose the following methods:
 * [GetDocumentCreationExceptionMessage](https://docs.devexpress.com/XtraReports/DevExpress.XtraReports.Web.WebDocumentViewer.WebDocumentViewerExceptionHandler.GetDocumentCreationExceptionMessage(DocumentCreationException)) to handle errors related to the document creation process;
 * [GetFaultExceptionMessage](http://docs.devexpress.com/XtraReports/DevExpress.XtraReports.Web.ClientControls.ExceptionHandler.GetFaultExceptionMessage(System.ServiceModel.FaultException)) to handle [FaultException](https://docs.microsoft.com/en-us/dotnet/api/system.servicemodel.faultexception);
 * [GetUnknownExceptionMessage](https://docs.devexpress.com/XtraReports/DevExpress.XtraReports.Web.ClientControls.ExceptionHandler.GetUnknownExceptionMessage(System.Exception)) to handle other unknown exceptions, for which reporting controls show the standard 'Internal Server Error' message.
+
+## Implementation Details
 
 This example contains several report layouts and emulates exceptions that can be raised when you work with reporting controls. 
 
@@ -29,6 +31,6 @@ The following table lists errors from this example and methods used to process t
 | Invalid Report URL (Designer) | FaultException  | [GetFaultExceptionMessage](http://docs.devexpress.com/XtraReports/DevExpress.XtraReports.Web.ClientControls.ExceptionHandler.GetFaultExceptionMessage(System.ServiceModel.FaultException))
 | Custom Document Operation (Viewer) | FaultException  | [GetFaultExceptionMessage](http://docs.devexpress.com/XtraReports/DevExpress.XtraReports.Web.ClientControls.ExceptionHandler.GetFaultExceptionMessage(System.ServiceModel.FaultException))
 
-**See also**
+## More Examples
 
-[How to handle server-side errors in web reporting controls (ASP.NET WebForms/MVC)](https://github.com/DevExpress-Examples/how-to-handle-server-side-errors-in-web-reporting-controls)
+* [How to handle server-side errors in web reporting controls (ASP.NET WebForms/MVC)](https://github.com/DevExpress-Examples/how-to-handle-server-side-errors-in-web-reporting-controls)
