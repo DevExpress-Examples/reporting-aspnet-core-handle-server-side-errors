@@ -4,7 +4,6 @@ using System.Configuration;
 using System.IO;
 using DevExpress.AspNetCore;
 using DevExpress.AspNetCore.Reporting;
-using DevExpress.XtraReports.Web.ClientControls;
 using DevExpress.XtraReports.Web.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -46,12 +45,7 @@ namespace DXAspNetCoreApp {
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostEnvironment env, ILoggerFactory loggerFactory) {
-            var reportingLogger = loggerFactory.CreateLogger("Reporting");
-            LoggerService.Initialize((ex, message) => {
-                var errorString = string.Format("[{0}]: Exception occurred. Message: '{1}'. Exception Details:\r\n{2}", DateTime.Now, message, ex);
-                reportingLogger.LogError(errorString);
-            });
+        public void Configure(IApplicationBuilder app, IHostEnvironment env) {
             DevExpress.XtraReports.Web.Extensions.ReportStorageWebExtension.RegisterExtensionGlobal(app.ApplicationServices.GetService<ReportStorageWebExtension>());
             DevExpress.XtraReports.Configuration.Settings.Default.UserDesignerOptions.DataBindingMode = DevExpress.XtraReports.UI.DataBindingMode.Expressions;
             app.UseDevExpressControls();
